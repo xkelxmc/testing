@@ -2,6 +2,30 @@ import * as fs from 'fs';
 import { Lootbuckets } from './loot-bucket.entity';
 import { Loottable } from './loot-table.entity';
 
+export interface LootTableEntry {
+  LootTableID: string;
+  'AND/OR'?: string;
+  Conditions?: string[];
+  GSBonus?: number;
+  HWMMult?: number;
+  ConditionOverridesRoll?: boolean;
+  Name: string;
+  RollBonusSetting?: string;
+  MaxRoll: number;
+  UseLevelGS?: boolean;
+  Items: LootTableRow[];
+}
+
+export interface LootTableRow {
+  index: number;
+  ItemID?: string;
+  LootBucketID?: string;
+  LootTableID?: string;
+  // Qty?: null | [number] | [number, number];
+  // Prob?: number;
+  // GearScoreRange?: null | [number] | [number, number];
+}
+
 const importFile = async (path: string) => {
   const data = await fs.promises.readFile(path, { encoding: 'utf-8' });
   return JSON.parse(data);
@@ -16,3 +40,28 @@ const importFile = async (path: string) => {
   )) as unknown as Loottable[];
   console.log('hello world!');
 })();
+
+// const a = {
+//   LootBucketID: 'test',
+//   Items: [
+//     {
+//       LootBucketID: 'test2',
+//       Items: [
+//         {
+//           ItemId: 'item-testid'
+//         },
+//         {
+//           ItemId: 'item-testid2'
+//         },
+//         {
+//           LootBucketID: 'test3',
+//           Items: [
+//             {
+//               ItemId: 'item-testid3'
+//             }
+//           ]
+//         }
+//       ]
+//     }
+//   ]
+// }
