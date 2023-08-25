@@ -31,6 +31,14 @@ const importFile = async (path: string) => {
   return JSON.parse(data);
 };
 
+const normalizeLootTables = (lootTables: Loottable[]): LootTableEntry[] => {
+  return [];
+};
+
+const buildGraph = (lootTables: LootTableEntry[], lootTableId: string) => {
+  return null;
+};
+
 (async () => {
   const lootBuckets = (await importFile(
     './src/javelindata_lootbuckets.json',
@@ -39,9 +47,15 @@ const importFile = async (path: string) => {
     './src/javelindata_loottables.json',
   )) as unknown as Loottable[];
   console.log('hello world!');
+
+  const normalizedLootTables = normalizeLootTables(lootTables);
+
+  //examples:
+  const creatureLootMasterGraph = buildGraph(normalizedLootTables, 'CreatureLootMaster');
+  console.log(creatureLootMasterGraph);
 })();
 
-// const a = {
+// const example = {
 //   LootBucketID: 'test',
 //   Items: [
 //     {
