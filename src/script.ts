@@ -1,4 +1,18 @@
-const lootBucketsUrl = 'https://cdn.cany.link/_0/javelindata_lootbuckets.json';
-const lootTablesUrl = 'https://cdn.cany.link/_0/javelindata_loottables.json';
+import * as fs from 'fs';
+import { Lootbuckets } from './loot-bucket.entity';
+import { Loottable } from './loot-table.entity';
 
-console.log('hello world!')
+const importFile = async (path: string) => {
+  const data = await fs.promises.readFile(path, { encoding: 'utf-8' });
+  return JSON.parse(data);
+};
+
+(async () => {
+  const lootBuckets = (await importFile(
+    './src/javelindata_lootbuckets.json',
+  )) as unknown as Lootbuckets[];
+  const lootTables = (await importFile(
+    './src/javelindata_loottables.json',
+  )) as unknown as Loottable[];
+  console.log('hello world!');
+})();
