@@ -35,7 +35,18 @@ const normalizeLootTables = (lootTables: Loottable[]): LootTableEntry[] => {
   return [];
 };
 
-const buildGraph = (lootTables: LootTableEntry[], lootTableId: string) => {
+interface LootBucketEntry {
+  //todo
+}
+const normalizeLootBuckets = (lootBuckets: Lootbuckets[]): LootBucketEntry[] => {
+  return [];
+};
+
+const buildGraph = (
+  lootTables: LootTableEntry[],
+  lootBuckets: LootBucketEntry[],
+  lootTableId: string,
+) => {
   return null;
 };
 
@@ -49,9 +60,14 @@ const buildGraph = (lootTables: LootTableEntry[], lootTableId: string) => {
   console.log('hello world!');
 
   const normalizedLootTables = normalizeLootTables(lootTables);
+  const normalizedLootBuckets = normalizeLootBuckets(lootBuckets);
 
   //examples:
-  const creatureLootMasterGraph = buildGraph(normalizedLootTables, 'CreatureLootMaster');
+  const creatureLootMasterGraph = buildGraph(
+    normalizedLootTables,
+    normalizedLootBuckets,
+    'CreatureLootMaster',
+  );
   console.log(creatureLootMasterGraph);
 })();
 
