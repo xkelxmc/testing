@@ -9,7 +9,7 @@ export interface LootTableEntry {
   GSBonus?: number;
   HWMMult?: number;
   ConditionOverridesRoll?: boolean;
-  Name: string;
+  Name: string; //LootTableID.replace(/([a-z])([A-Z])/g, '$1 $2').replaceAll(/[_-]/g, ' ')
   RollBonusSetting?: string;
   MaxRoll: number;
   UseLevelGS?: boolean;
